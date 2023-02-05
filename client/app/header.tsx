@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { ChromePicker } from "react-color";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:3001");
 
 type Props = {
   setColor: Dispatch<SetStateAction<string>>;
@@ -34,7 +36,10 @@ const Header = ({
         )}
         <button
           type="button"
-          onClick={clear}
+          onClick={() => {
+            clear();
+            socket.emit("clear");
+          }}
           className="px-10 py-2 rounded-lg border bg-white shadow-xl text-lg font-semibold select-none"
         >
           Clear

@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { io } from "socket.io-client";
-const socket = io("http://localhost:3001");
 
 export const useDraw = (
   onDraw: ({ ctx, currentPoint, prevPoint }: Draw) => void
@@ -14,7 +12,6 @@ export const useDraw = (
 
   //clear function
   const clear = () => {
-    socket.emit("clear");
     const canvas = canvasRef.current;
     if (!canvas) return;
 

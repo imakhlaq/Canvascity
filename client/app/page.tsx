@@ -7,7 +7,6 @@ import { io } from "socket.io-client";
 import { drawLine } from "@/utils/drawLine";
 import { Socket } from "dgram";
 const socket = io("http://localhost:3001");
-
 type DrawLineProps = {
   prevPoint: Point | null;
   currentPoint: Point;
@@ -58,7 +57,7 @@ const Page = () => {
       socket.off("draw-line");
       socket.off("clear");
     };
-  }, [canvasRef, clear]);
+  }, [canvasRef]);
 
   const width =
     window.innerWidth ||
@@ -89,7 +88,7 @@ const Page = () => {
         ref={canvasRef}
         width={width - 10}
         height={height - 130}
-        className="border border-black rounded-md bg-[#F9F5E7]"
+        className="border border-black rounded-md bg-[#F9F5E7] cursor-crosshair"
       />
     </div>
   );
