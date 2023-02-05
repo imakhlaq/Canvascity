@@ -2,5 +2,5 @@
   "version": 2,
   "name": "Canvascity",
   "builds": [{ "src": "index.ts", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
+  "routes": [{ "src": "/.*", "dest": "/index.ts" }]
 }
